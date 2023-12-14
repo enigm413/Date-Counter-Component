@@ -2,29 +2,51 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
+//Function to define Step Component
 function App() {
-  return <Counter />;
+  return <DateCounter />;
 }
 
-function Counter() {
+// Function to define Date counter component
+function DateCounter() {
   //State to define counter
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
+
+  //State to define step
+  const [step, setStep] = useState(1);
 
   //Function to handle minus button
   const handleClickMinus = () => {
-    setCount(count - 1);
+    setCount(count - step);
   };
 
   //Function to handle minus button
   const handleClickPlus = () => {
-    setCount(count + 1);
+    setCount(count + step);
+  };
+
+  //Function to handle input range
+  const handleSlider = (event) => {
+    setStep(Number(event.target.value));
   };
 
   return (
     <div>
-      <button onClick={handleClickMinus}>-</button>
-      <input type="text" value={count} />
-      <button onClick={handleClickPlus}>+</button>
+      <div className="slider">
+        <input
+          type="range"
+          min={0}
+          max={10}
+          onChange={handleSlider}
+          value={step}
+        />
+        <span>Step : {step}</span>
+      </div>
+      <div>
+        <button onClick={handleClickMinus}>-</button>
+        <input type="text" value={count} />
+        <button onClick={handleClickPlus}>+</button>
+      </div>
     </div>
   );
 }

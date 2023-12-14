@@ -35,6 +35,9 @@ function DateCounter() {
     setCount(Number(event.target.value));
   };
 
+  const date = new Date();
+  date.setDate(date.getDate() + count);
+
   //Function handle reset
   const handleReset = () => {
     setCount(0);
@@ -58,6 +61,16 @@ function DateCounter() {
         <input type="text" value={count} onChange={handleText} />
         <button onClick={handleClickPlus}>+</button>
       </div>
+      <p>
+        <span>
+          {count === 0
+            ? "Today is "
+            : count > 0
+            ? `${count} day from Today is `
+            : `${count} day ago was`}
+        </span>
+        <span>{date.toDateString()}</span>
+      </p>
       <button onClick={handleReset}>Reset</button>
     </div>
   );

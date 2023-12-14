@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
@@ -7,11 +7,24 @@ function App() {
 }
 
 function Counter() {
+  //State to define counter
+  const [count, setCount] = useState(1);
+
+  //Function to handle minus button
+  const handleClickMinus = () => {
+    setCount(count - 1);
+  };
+
+  //Function to handle minus button
+  const handleClickPlus = () => {
+    setCount(count + 1);
+  };
+
   return (
     <div>
-      <button>-</button>
-      <input type="text" />
-      <button>+</button>
+      <button onClick={handleClickMinus}>-</button>
+      <input type="text" value={count} />
+      <button onClick={handleClickPlus}>+</button>
     </div>
   );
 }

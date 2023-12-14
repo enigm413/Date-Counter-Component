@@ -30,6 +30,11 @@ function DateCounter() {
     setStep(Number(event.target.value));
   };
 
+  //Function handle text input
+  const handleText = (event) => {
+    setCount(Number(event.target.value));
+  };
+
   return (
     <div>
       <div className="slider">
@@ -44,9 +49,10 @@ function DateCounter() {
       </div>
       <div>
         <button onClick={handleClickMinus}>-</button>
-        <input type="text" value={count} />
+        <input type="text" value={count} onChange={handleText} />
         <button onClick={handleClickPlus}>+</button>
       </div>
+      <p></p>
     </div>
   );
 }
